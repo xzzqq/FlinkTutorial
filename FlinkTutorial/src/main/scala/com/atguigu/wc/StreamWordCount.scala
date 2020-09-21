@@ -8,6 +8,7 @@ object StreamWordCount {
   def main(args: Array[String]): Unit = {
     //创建流处理的执行环境
     val env = StreamExecutionEnvironment.getExecutionEnvironment
+    env.setParallelism(8)
 
     // 接收一个socket文本流
     val inputDataStream: DataStream[String] = env.socketTextStream("localhost",7777)
